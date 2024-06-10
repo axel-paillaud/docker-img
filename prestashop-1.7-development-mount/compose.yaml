@@ -1,15 +1,7 @@
 services:
   app:
-    image: php:7.4-cli
-    command: >
-      bash -c '
-      apt update &&
-      apt install -y libzip-dev libicu-dev libonig-dev libfreetype-dev
-      libjpeg62-turbo-dev libpng-dev
-      && docker-php-ext-configure gd --with-freetype --with-jpeg
-      && docker-php-ext-install zip intl gd pdo_mysql opcache
-      && php -S 0.0.0.0:8080 -t /app
-      '
+    image: axelpaillaud/prestashop-1-7 
+    command: bash -c 'php -S 0.0.0.0:8080 -t /app' 
     ports:
       - 127.0.0.1:8080:8080
     working_dir: /app
